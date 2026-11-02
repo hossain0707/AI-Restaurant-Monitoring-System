@@ -5,7 +5,7 @@
 
 ## What this version actually does
 
-- Browser camera uses \`getUserMedia\` only after explicit consent.
+- Browser camera uses `getUserMedia` only after explicit consent.
 - Client-side COCO-SSD inference processes images within the user's browser. It does not submit frames to a hosted AI API.
 - The IP/RTSP bridge reads frames into RAM and streams reduced-resolution MJPEG to the same local origin; it does not record videos.
 - The website contains no authentication and no external database. Its demo and table states are session-memory only.
@@ -13,7 +13,7 @@
 
 ## Not safe without additional engineering
 
-The bridge has **no user authentication** and should only be used on the local host behind a trusted environment. Never bind it to \`0.0.0.0\` unless an authenticated TLS reverse proxy and network access policy have been implemented. Do not publish camera network addresses, passwords, or access keys in the repository. Avoid camera passwords in shell history where possible; use a protected environment configuration or secret manager. Never store video or customer-identifying metadata without explicit authorization and legal basis.
+The bridge has **no user authentication** and should only be used on the local host behind a trusted environment. Never bind it to `0.0.0.0` unless an authenticated TLS reverse proxy and network access policy have been implemented. Do not publish camera network addresses, passwords, or access keys in the repository. Avoid camera passwords in shell history where possible; use a protected environment configuration or secret manager. Never store video or customer-identifying metadata without explicit authorization and legal basis.
 
 For commercial deployment, implement user sign-in, RBAC, audit logs, rate limiting, isolated camera access, secrets storage, TLS, CSP, dependency pinning, network restrictions, retention/deletion policies, operator sign-off, automated tests, and penetration testing.
 
