@@ -1,0 +1,52 @@
+/* TableSight Living Digital Twin UI.
+   Camera people are never reproduced; avatars are simulated illustrations. */
+.floor-perspective.is-cinematic{
+ height:530px;
+ min-height:440px;
+ overflow:hidden;
+ background:#071522;
+ isolation:isolate;
+}
+.floor-perspective.is-cinematic .grid-plane,.floor-perspective.is-cinematic .scene{display:none}
+.twin-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1;cursor:grab;touch-action:pan-y}
+.twin-canvas:active{cursor:grabbing}
+.twin-badges{position:absolute;inset:0;z-index:4;pointer-events:none}
+.twin-badge{
+ position:absolute;transform:translate(-50%,-50%);
+ border:1px solid #2e846f;background:linear-gradient(110deg,#0c2528ec,#142c37e6);
+ box-shadow:0 9px 24px #0009,0 0 18px #51ecb426;
+ border-radius:10px;color:#b9fce1;pointer-events:auto;cursor:pointer;
+ text-align:left;min-width:102px;padding:6px 10px;
+ display:grid;grid-template-columns:33px 1fr;grid-template-rows:16px 13px;
+ gap:0 6px;align-items:center;font:700 11px "DM Sans",sans-serif;
+ transition:background .25s,box-shadow .25s,border-color .25s;
+}
+.twin-badge:hover,.twin-badge:focus-visible{box-shadow:0 0 25px #65ead499;z-index:5;outline:2px solid #a1fff1}
+.twin-badge strong{grid-row:span 2;align-self:center;letter-spacing:1px;font-size:13px}
+.twin-badge span{font-size:10px;white-space:nowrap}
+.twin-badge small{font-size:7px;white-space:nowrap;color:#8fafa8;font-weight:500}
+.twin-badge.occupied{border-color:#cc7584;background:#331d2de8;color:#ffb4c0;box-shadow:0 0 17px #eb76833f}
+.twin-badge.occupied small{color:#caa4b0}
+.twin-badge.cleaning{border-color:#d1a05e;background:#382c25ea;color:#ffe0ac;box-shadow:0 0 18px #f7b56642;animation:twin-clean-glow 2.5s ease-in-out infinite}
+.twin-badge.cleaning small{color:#e7bd80}
+.twin-badge.reserved{border-color:#9984d4;background:#241c38e8;color:#d9caff}
+.twin-badge.unmonitored{border-color:#5c7284;background:#1a2430d9;color:#a3b9c6}
+@keyframes twin-clean-glow{50%{box-shadow:0 0 28px #f9bb6982}}
+.twin-hud{z-index:5;position:absolute;left:16px;top:10px;display:flex;align-items:center;gap:8px;
+ color:#bbd7d2;font:700 9px "DM Sans",sans-serif;letter-spacing:1px;
+ background:#081b23e8;border:1px solid #32574f;border-radius:20px;padding:7px 12px;pointer-events:none}
+.twin-live-dot{width:7px;height:7px;border-radius:50%;background:#57e8c5;box-shadow:0 0 9px #57e8c5;animation:twin-beat 2s infinite}
+@keyframes twin-beat{50%{opacity:.4;box-shadow:0 0 17px #57e8c5}}
+.twin-hud-sep{color:#5c8884}
+.twin-toolbar{position:absolute;right:14px;bottom:16px;display:flex;gap:7px;z-index:5}
+.twin-toolbar button{color:#a7f1db;background:#0a232be6;border:1px solid #2e6359;border-radius:7px;padding:8px 12px;cursor:pointer;font-size:10px}
+.twin-toolbar button:hover{background:#224744}
+.twin-intro{position:absolute;inset:0;display:grid;place-items:center;color:#90b2b0;font-size:12px}
+.floor-perspective.is-cinematic .scene-label{z-index:3;opacity:.68;pointer-events:none}
+.floor-panel .panel-top{align-items:center}
+.floor-panel .panel-top:after{content:"REALTIME 3D";white-space:nowrap;color:#81dabc;border:1px solid #2d6b5b;border-radius:14px;padding:5px 9px;font-size:9px;letter-spacing:1px;align-self:flex-start}
+.floor-panel{min-width:0}
+.columns{grid-template-columns:minmax(0,1.65fr) minmax(260px,.70fr)}
+@media(max-width:1280px){.columns{grid-template-columns:1fr}.stack{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.floor-perspective.is-cinematic{height:410px;min-height:410px}.twin-badge{min-width:67px;grid-template-columns:1fr;grid-template-rows:13px 12px;padding:4px 6px;text-align:center}.twin-badge strong{grid-row:auto;font-size:10px}.twin-badge span{font-size:8px}.twin-badge small{display:none}.twin-hud{font-size:8px;letter-spacing:0}.twin-hud span:last-child,.twin-hud-sep{display:none}.twin-toolbar{right:7px;bottom:12px}.twin-toolbar button{padding:6px;font-size:9px}.stack{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.twin-badge.cleaning,.twin-live-dot{animation:none}}

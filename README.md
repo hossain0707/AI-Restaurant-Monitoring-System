@@ -4,7 +4,7 @@
 
 # TableSight — AI Restaurant Monitoring System
 
-**A privacy-aware, visually immersive restaurant intelligence console with interactive 3D tables, optional on-device AI person detection, and camera-source support.**
+**A privacy-aware restaurant intelligence console with a real WebGL digital twin: animated diners, cleaning staff, set tables, camera-driven occupancy states, and human-operated table controls.**
 
 [![CI](https://github.com/hossain0707/AI-Restaurant-Monitoring-System/actions/workflows/ci.yml/badge.svg)](https://github.com/hossain0707/AI-Restaurant-Monitoring-System/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-FastAPI-1b6b62)
@@ -24,11 +24,17 @@ TableSight translates camera observations into actionable table-status changes. 
 
 The current implementation is an **engineering prototype**, not a validated production deployment. It does not claim perfect occupancy detection, crowd tracking, identity recognition, service-time predictions, or regulatory certification.
 
+### Living 3D restaurant — interactive upgrade (November 2026)
+
+The live preview renders a **procedural Three.js digital twin**, rather than the original circular table markers. Each table has 3D furniture, place settings, dynamic lighting, simulated diner gestures, and animated staff wiping/resetting tasks. Status rings and badges respond to table state changes. Drag to rotate the viewpoint, click floating table labels to operate them, or pause the motion.
+
+**Important distinction:** The earlier cinematic images were *concept art*, not rigged animations. The interactive 3D people are **stylized simulated avatars**, not real customers reconstructed from cameras. The camera AI can change table occupancy states, but it does not actually recognize someone eating or a cleaner wiping a surface. Staff must manually confirm cleaning completion. Three.js is loaded on first visit from a CDN and WebGL is required. The legacy floor remains as a fallback when 3D rendering is unavailable.
+
 ### Product capabilities
 
 | Capability | Current behavior | Status |
 |:--|:--|:--|
-| Live interactive 3D digital twin | Animated 12-table floor with manual state controls | Implemented |
+| Interactive living 3D digital twin | Three.js procedural chairs/tables, animated simulated people, lighting and status controls | Implemented |
 | Restaurant simulation | Labeled simulated table activity, alerts, event log | Implemented |
 | Laptop and USB cameras | Browser permission-based camera enumeration and preview | Implemented |
 | On-device vision | Optional TensorFlow.js + COCO-SSD person detections | Implemented (requires model download) |
@@ -129,6 +135,7 @@ pip install -r bridge/requirements.txt -r bridge/requirements-dev.txt
 python -m unittest discover -s tests -v
 python -m compileall -q bridge tests
 node --check docs/app.js
+node --check docs/digital-twin.js
 ```
 
 ### Repository map
