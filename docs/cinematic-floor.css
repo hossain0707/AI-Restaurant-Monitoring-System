@@ -1,0 +1,30 @@
+/* Same approved artwork, moving highlights, optional high-resolution source */
+.photo-switch{display:flex;gap:4px;margin-left:auto;background:#091b2a;border:1px solid #316459;padding:4px;border-radius:10px;flex-wrap:wrap}
+.photo-switch button{border:0;border-radius:7px;color:#9ad6ca;background:transparent;padding:7px 8px;font-size:10px;cursor:pointer}
+.photo-switch button.selected{background:#7ce9c7;color:#09231e;font-weight:700}
+.floor-perspective.photo-mode{height:auto;min-height:240px;aspect-ratio:1916/821}
+.floor-perspective.photo-mode>.twin-canvas,.floor-perspective.photo-mode>.twin-hud,.floor-perspective.photo-mode>.twin-badges,.floor-perspective.photo-mode>.twin-toolbar,.floor-perspective.photo-mode>.scene-label,.floor-perspective.photo-mode>.scene,.floor-perspective.photo-mode>.grid-plane{display:none!important}
+.photo-scene{position:absolute;inset:0;overflow:hidden;background:linear-gradient(145deg,#06121e,#122932);isolation:isolate}
+.photo-scene[hidden]{display:none!important}
+.photo-base{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:0}
+.photo-actors,.photo-rings,.photo-labels{position:absolute;inset:0;pointer-events:none}
+.photo-actors{z-index:1}.photo-rings{z-index:2}.photo-labels{z-index:4}
+.photo-actor{position:absolute;inset:0;background-size:100% 100%;background-repeat:no-repeat;mask-image:radial-gradient(ellipse var(--rx) var(--ry) at var(--x) var(--y),black 14%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse var(--rx) var(--ry) at var(--x) var(--y),black 14%,transparent 100%);animation:photo-gesture var(--duration) ease-in-out infinite alternate}
+@keyframes photo-gesture{0%{transform:translate(-1.1px,0) rotate(-.05deg)}50%{transform:translate(1.6px,-1.4px) rotate(.08deg)}100%{transform:translate(-.7px,.8px) rotate(.03deg)}}
+.photo-sensor{position:absolute;width:12%;aspect-ratio:1;transform:translate(-50%,-30%);border:1px solid var(--status);border-radius:50%;box-shadow:0 0 12px var(--status);animation:photo-pulse 3.8s ease-out infinite}
+@keyframes photo-pulse{0%{transform:translate(-50%,-30%) scale(.55);opacity:.55}90%,100%{transform:translate(-50%,-30%) scale(1.2);opacity:0}}
+.photo-badge{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:1px;border:1px solid var(--status);background:#0a1925f0;border-radius:6px;box-shadow:0 0 16px #0009,0 0 8px var(--status);color:var(--status);padding:5px 9px;min-width:95px;z-index:4;font:600 10px 'DM Sans',sans-serif}
+.photo-badge:hover,.photo-badge:focus-visible{outline:2px solid white;z-index:7}
+.photo-badge small{font-size:7px;color:#c6d7db;white-space:nowrap}
+.photo-live{z-index:5;position:absolute;top:8px;left:12px;padding:6px 9px;background:#0c2331e8;border:1px solid #3a8977;border-radius:20px;color:#a7f8d6;font:700 8px 'DM Sans';letter-spacing:.7px;animation:photo-flicker 2.5s ease-in-out infinite}
+@keyframes photo-flicker{50%{box-shadow:0 0 14px #53e2bb77}}
+.photo-controls{z-index:8;position:absolute;right:12px;bottom:12px;display:flex;gap:6px;flex-wrap:wrap}
+.photo-action{color:#d9fff4;background:#0c2531e9;border:1px solid #548877;border-radius:7px;padding:7px 9px;font:700 9px 'DM Sans';cursor:pointer}
+.photo-missing{position:absolute;inset:15% 10%;z-index:6;background:linear-gradient(140deg,#0f2e38,#142332);border:1px dashed #599985;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:15px;color:#b5dbd0}
+.photo-missing strong{font-size:14px;color:#eefff7}.photo-missing span{font-size:11px;max-width:300px}
+.photo-missing[hidden]{display:none}
+.photo-scene:not(.loaded) .photo-base,.photo-scene:not(.loaded) .photo-actors,.photo-scene:not(.loaded) .photo-rings,.photo-scene:not(.loaded) .photo-labels{display:none}
+.photo-scene:not(.loaded) .photo-controls{right:50%;bottom:18%;transform:translateX(50%)}
+.photo-paused .photo-actor,.photo-paused .photo-sensor,.photo-paused .photo-live{animation-play-state:paused}
+@media(max-width:760px){.floor-perspective.photo-mode{min-height:225px}.photo-switch{width:100%}.photo-badge{min-width:44px;padding:3px}.photo-badge strong{font-size:7px}.photo-badge small{display:none}.photo-live{font-size:6px;left:4px;top:3px}.photo-controls{bottom:4px;right:4px}.photo-action{font-size:7px;padding:5px}}
+@media(prefers-reduced-motion:reduce){.photo-actor,.photo-sensor,.photo-live{animation:none!important}}

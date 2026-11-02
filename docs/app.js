@@ -28,6 +28,7 @@ function render(){
  const twinData={tables:tables.map(t=>({id:t.id,status:t.status,updated:t.updated,seats:t.seats})),meta:{mode:state.mode,ai:state.ai}};
  window.__TableSightSnapshot=twinData;
  if(window.TableSightTwin)window.TableSightTwin.sync(twinData.tables,twinData.meta);
+ window.dispatchEvent(new CustomEvent("tablesight:floor",{detail:twinData}));
 }
 function renderEvents(){const root=$("events");root.replaceChildren();if(!state.events.length){root.innerHTML='<div class="empty">Events will appear here. Camera footage is never included.</div>';return}state.events.slice(0,10).forEach(ev=>{const line=document.createElement("div");line.className="event";const dot=document.createElement("i");const content=document.createElement("div");const name=document.createElement("b");name.textContent=ev.message;const detail=document.createElement("p");detail.textContent=ev.detail;const time=document.createElement("time");time.textContent=ev.time.toLocaleTimeString();content.append(name,detail);line.append(dot,content,time);root.append(line)})}
 function openModal(t){state.selected=t;$("modalTable").textContent=t.name;$("modalStatus").textContent="Current state: "+states[t.status]+" · "+t.seats+" seats";$("tableModal").hidden=false}

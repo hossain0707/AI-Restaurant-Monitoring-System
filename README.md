@@ -24,6 +24,12 @@ TableSight translates camera observations into actionable table-status changes. 
 
 The current implementation is an **engineering prototype**, not a validated production deployment. It does not claim perfect occupancy detection, crowd tracking, identity recognition, service-time predictions, or regulatory certification.
 
+### Cinematic view based on the approved reference (November 2026)
+
+The **Original cinematic view** keeps the exact composition of the user's provided illustration rather than replacing it with simplified geometry. There are floating clickable table labels, animated sensor pulses and subtle feather-masked motion in customer/staff regions. **This animation is a 2.5D effect on a still illustration, not a real recorded video or fully rigged 3D character animation.** Camera-derived table status changes are reflected in the overlay, while actions like eating or wiping remain simulated.
+
+To make the exact artwork available to **all public visitors**, the copyright owner must add their approved PNG at `assets/restaurant-reference.png` on GitHub. The published viewer attempts to load it from the public repository at runtime. Until that asset exists, the viewer explicitly invites the visitor to select the approved image locally. A chosen image is stored in that viewer's browser with IndexedDB and does not upload to any server. The *Alternate 3D model* remains available for visitors without the image. The Vercel static site requires no additional deployment once the public GitHub raw asset exists.
+
 ### Living 3D restaurant — interactive upgrade (November 2026)
 
 The live preview renders a **procedural Three.js digital twin**, rather than the original circular table markers. Each table has 3D furniture, place settings, dynamic lighting, simulated diner gestures, and animated staff wiping/resetting tasks. Status rings and badges respond to table state changes. Drag to rotate the viewpoint, click floating table labels to operate them, or pause the motion.
@@ -136,6 +142,7 @@ python -m unittest discover -s tests -v
 python -m compileall -q bridge tests
 node --check docs/app.js
 node --check docs/digital-twin.js
+node --check docs/cinematic-floor.js
 ```
 
 ### Repository map

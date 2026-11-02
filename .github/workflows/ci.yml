@@ -19,5 +19,6 @@ jobs:
           python -m compileall -q bridge tests
           node --check docs/app.js
           node --check docs/digital-twin.js
+          node --check docs/cinematic-floor.js
       - name: Bridge unit tests
         run: python -m unittest discover -s tests -v
