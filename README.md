@@ -45,35 +45,35 @@ The current implementation is an **engineering prototype**, not a validated prod
 <img src="assets/architecture.svg" alt="TableSight privacy-aware camera and browser AI architecture" width="92%"/>
 </div>
 
-The front end is a standalone static app (\`docs/index.html\`, \`docs/styles.css\`, \`docs/app.js\`). No API keys or commercial AI service is required. For the optional detection model, the first use downloads TensorFlow.js and COCO-SSD weights from public CDN/model endpoints; **run the app without that step for an offline visual demo**. The app has no face recognition, persistent behavioral tracking, or video recording.
+The front end is a standalone static app (`docs/index.html`, `docs/styles.css`, `docs/app.js`). No API keys or commercial AI service is required. For the optional detection model, the first use downloads TensorFlow.js and COCO-SSD weights from public CDN/model endpoints; **run the app without that step for an offline visual demo**. The app has no face recognition, persistent behavioral tracking, or video recording.
 
 ### A. Start the 3D demo (no camera)
 
 Serve the HTML files over a local origin:
 
-\`\`\`bash
+```bash
 python -m http.server 8000 --directory docs
 # Open http://127.0.0.1:8000
-\`\`\`
+```
 
 Open **Operations overview**, select any table, and mark it occupied, free, reserved, or needing cleaning. Use **Next demo event** to advance a clearly simulated scenario. The demo periodically advances events and can be used without model downloads.
 
 ### B. Use laptop or external USB camera
 
-1. Open the HTML demo using **HTTPS** (once Pages is enabled) or \`localhost\`.
+1. Open the HTML demo using **HTTPS** (once Pages is enabled) or `localhost`.
 2. Under **Camera laboratory**, choose **Laptop / USB camera**.
 3. Select a detected video input, press **Start preview**, and grant browser camera permission.
 4. Choose **Enable person detection**. The model downloads on first use.
 5. Select a table, press **Draw zone**, and drag the rectangle over its **seated-person area** in the preview. Repeat for each monitored table.
 6. Watch camera detections affect *only calibrated table regions*. Unmapped tables stay unmonitored. Staff can override statuses on the floor map.
 
-Browser camera input uses \`navigator.mediaDevices.getUserMedia\`. Browser permissions are per user. A USB webcam appears in the list when the operating system exposes it as a video input. **Never assume that a person near a table is necessarily seated at it**; this MVP uses a simple person-center-in-region heuristic. Test with consented recordings and multiple camera angles before relying on it operationally.
+Browser camera input uses `navigator.mediaDevices.getUserMedia`. Browser permissions are per user. A USB webcam appears in the list when the operating system exposes it as a video input. **Never assume that a person near a table is necessarily seated at it**; this MVP uses a simple person-center-in-region heuristic. Test with consented recordings and multiple camera angles before relying on it operationally.
 
 ### C. Use an IP / RTSP camera (local network only)
 
 **RTSP cannot be consumed directly by HTML5 video in a standard browser.** The optional Python bridge reads the camera via OpenCV and exposes an MJPEG response. Serve the dashboard and MJPEG from the **same local origin**:
 
-\`\`\`bash
+```bash
 python -m venv .venv
 # Windows: .venv\Scripts\activate
 # macOS / Linux: source .venv/bin/activate
@@ -83,22 +83,22 @@ pip install -r bridge/requirements.txt -r bridge/requirements-camera.txt
 export CAMERA_SOURCE='rtsp://USER:PASSWORD@192.168.1.50:554/stream1'
 python -m bridge.server
 # Open http://127.0.0.1:8765
-\`\`\`
+```
 
 **Windows PowerShell**
 
-\`\`\`powershell
+```powershell
 $env:CAMERA_SOURCE="rtsp://USER:PASSWORD@192.168.1.50:554/stream1"
 python -m bridge.server
-\`\`\`
+```
 
-In the camera laboratory select **IP camera via local bridge**, enter \`http://127.0.0.1:8765/stream.mjpg\`, and press **Start preview**. Optionally enable browser AI and draw seating zones. Alternatively use \`CAMERA_SOURCE=0\` for the host's first OpenCV camera.
+In the camera laboratory select **IP camera via local bridge**, enter `http://127.0.0.1:8765/stream.mjpg`, and press **Start preview**. Optionally enable browser AI and draw seating zones. Alternatively use `CAMERA_SOURCE=0` for the host's first OpenCV camera.
 
-**Important:** The local bridge binds to \`127.0.0.1\` by default and does not include a hardened authentication or stream-access service. **Do not expose it to the public internet or forward port 8765.** For HTTPS-hosted pages, an insecure HTTP stream can be blocked by mixed-content and private-network access protections. The reliable configuration is to serve the dashboard and bridge on the *same* trusted local origin; a production remote deployment needs authenticated TLS reverse proxy, explicit authorization and camera access policies.
+**Important:** The local bridge binds to `127.0.0.1` by default and does not include a hardened authentication or stream-access service. **Do not expose it to the public internet or forward port 8765.** For HTTPS-hosted pages, an insecure HTTP stream can be blocked by mixed-content and private-network access protections. The reliable configuration is to serve the dashboard and bridge on the *same* trusted local origin; a production remote deployment needs authenticated TLS reverse proxy, explicit authorization and camera access policies.
 
 ### System operation
 
-\`\`\`text
+```text
 Camera / IP stream
        │
        ├── Browser USB/laptop camera → getUserMedia ─┐
@@ -115,25 +115,25 @@ Camera / IP stream
                                         Debounced state transitions
                                                      │
                                      3D floor + alerts + event log
-\`\`\`
+```
 
 - **No video upload:** The browser AI receives frames from the local video/bridge preview.
 - **No persistent session state:** Tables, zones and events reset on refresh. This is deliberate for a privacy-conscious prototype.
-- **Not reservation software:** The \`reserved\` state is a manual visual label; there is no booking service.
+- **Not reservation software:** The `reserved` state is a manual visual label; there is no booking service.
 - **Live accuracy needs validation:** Occlusions, lighting, overlapping regions, standing staff and unreliable connectivity can produce false transitions.
 
 ## Development
 
-\`\`\`bash
+```bash
 pip install -r bridge/requirements.txt -r bridge/requirements-dev.txt
 python -m unittest discover -s tests -v
 python -m compileall -q bridge tests
 node --check docs/app.js
-\`\`\`
+```
 
 ### Repository map
 
-\`\`\`text
+```text
 ├── docs/
 │   ├── index.html            # Interactive client presentation
 │   ├── styles.css            # Responsive 3D-inspired floor/dashboard
@@ -152,7 +152,7 @@ node --check docs/app.js
 ├── SECURITY.md
 ├── ROADMAP.md
 └── LICENSE
-\`\`\`
+```
 
 ## Engineering principles
 
