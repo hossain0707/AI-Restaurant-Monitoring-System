@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 235" width="1100" height="235">
+<rect width="1100" height="235" rx="18" fill="#0a1623"/><g font-family="Arial,sans-serif" font-size="15" text-anchor="middle">
+<g fill="#17323c" stroke="#4aa994" stroke-width="1.5"><rect x="25" y="65" width="195" height="100" rx="14"/><rect x="260" y="65" width="180" height="100" rx="14"/><rect x="480" y="65" width="183" height="100" rx="14"/><rect x="703" y="65" width="165" height="100" rx="14"/><rect x="909" y="65" width="167" height="100" rx="14"/></g>
+<g fill="#e9fff5" font-weight="bold"><text x="122" y="104">CAMERA SOURCE</text><text x="350" y="104">VIDEO PREVIEW</text><text x="570" y="104">BROWSER AI</text><text x="784" y="104">ZONE ENGINE</text><text x="993" y="104">3D OPERATIONS</text></g>
+<g fill="#87b8b1" font-size="12"><text x="122" y="128">Webcam · USB · RTSP</text><text x="350" y="128">Same device / loopback</text><text x="570" y="128">COCO-SSD person boxes</text><text x="784" y="128">Per-table ROI rules</text><text x="993" y="128">Alerts · Staff actions</text></g>
+<g stroke="#8ae5c7" stroke-width="3" stroke-linecap="round"><path d="M225 115h28m-8-7 8 7-8 7"/><path d="M445 115h28m-8-7 8 7-8 7"/><path d="M668 115h28m-8-7 8 7-8 7"/><path d="M873 115h28m-8-7 8 7-8 7"/></g>
+<text x="550" y="204" fill="#65bea9" font-size="12" font-weight="bold" letter-spacing="3">NO PERSISTENT VIDEO STORAGE • HUMAN CONFIRMATION • LOCAL-FIRST</text></g>
+</svg>
