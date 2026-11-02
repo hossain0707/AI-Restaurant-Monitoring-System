@@ -12,11 +12,11 @@
 ![Privacy](https://img.shields.io/badge/Privacy-Local--first-4aa98c)
 ![License](https://img.shields.io/badge/License-Proprietary-cd7e68)
 
-**[Launch the interactive HTML demo](https://hossain0707.github.io/AI-Restaurant-Monitoring-System/)** · [Architecture](ARCHITECTURE.md) · [Security](SECURITY.md) · [Roadmap](ROADMAP.md)
+**[Open the live 3D TableSight preview](https://tablesight-ai-restaurant.vercel.app/)** · [Architecture](ARCHITECTURE.md) · [Security](SECURITY.md) · [Roadmap](ROADMAP.md)
 
 </div>
 
-> **Deployment note:** The GitHub Pages demo URL above will work **after** Pages is enabled for this repository with source **Deploy from a branch → main → /docs**. GitHub Markdown cannot itself run the 3D application, so the live HTML preview lives in \`docs/\`. The demo is simulated by default; real camera access is opt-in.
+> **Deployment note:** The static client preview is published at **https://tablesight-ai-restaurant.vercel.app/**. It is a public demonstration, simulated by default; real camera access is opt-in. This Vercel project was deployed directly from the GitHub-committed source files because the GitHub→Vercel integration has not been granted access to this new repository. **Subsequent GitHub pushes will not automatically deploy there** until that integration is connected. To additionally publish via GitHub Pages, enable **Settings → Pages → Deploy from a branch → main → /docs**.
 
 ## Overview
 
