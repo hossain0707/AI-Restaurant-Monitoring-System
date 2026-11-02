@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08111f"><meta name="description" content="TableSight — privacy-aware real-time restaurant floor intelligence and camera monitoring">
-<title>TableSight | AI Restaurant Intelligence</title><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./twin.css"><link rel="stylesheet" href="./cinematic-floor.css"></head>
+<title>TableSight | Live Cinematic Restaurant Monitoring</title><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./cinematic-floor.css"></head>
 <body>
 <div class="ambient a1"></div><div class="ambient a2"></div>
 <div class="shell">
@@ -36,5 +36,5 @@
 <div class="modal" id="tableModal" hidden><div class="modal-content"><div class="modal-title">TABLE CONTROL <button id="closeModal" aria-label="Close">✕</button></div><h2 id="modalTable"></h2><p id="modalStatus"></p><div class="actions"><button data-state="available">✓ Available</button><button data-state="occupied">● Occupied</button><button data-state="cleaning">⌁ Needs cleaning</button><button data-state="reserved">◇ Reserved</button></div><p class="help">Camera inference never marks a table cleaned; staff must confirm it is available.</p></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="./app.js" defer></script>
-<script type="module" src="./digital-twin.js"></script><script src="./cinematic-floor.js" defer></script>
+<script src="./cinematic-floor.js" defer></script>
 </body></html>

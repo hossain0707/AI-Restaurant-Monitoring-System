@@ -5,7 +5,7 @@
 const $ = id => document.getElementById(id);
 const N = 12;
 const positions = [[12,24],[33,24],[54,24],[76,24],[21,49],[43,49],[65,49],[85,49],[12,74],[35,74],[58,74],[80,74]];
-const demoStates = ["occupied","available","occupied","cleaning","available","occupied","reserved","available","occupied","available","available","occupied"];
+const demoStates = ["available","available","cleaning","occupied","available","occupied","reserved","occupied","cleaning","available","cleaning","available"];
 const tables = Array.from({length:N},(_,i)=>({id:"T"+String(i+1).padStart(2,"0"),name:"Table "+(i+1),status:demoStates[i],x:positions[i][0],y:positions[i][1],seats:i%3===0?6:i%2===0?2:4,updated:Date.now(),present:0,absent:0}));
 const state = {mode:"demo",camera:null,image:null,stream:null,model:null,ai:false,live:false,draw:false,dragStart:null,zones:{},events:[],lastDetect:0,lastFPS:0,selected:null,timer:null,detectTimer:null};
 const states = {available:"AVAILABLE",occupied:"OCCUPIED",cleaning:"CLEANING",reserved:"RESERVED",unmonitored:"UNMAPPED"};

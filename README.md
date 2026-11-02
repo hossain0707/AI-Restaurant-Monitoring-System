@@ -24,17 +24,15 @@ TableSight translates camera observations into actionable table-status changes. 
 
 The current implementation is an **engineering prototype**, not a validated production deployment. It does not claim perfect occupancy detection, crowd tracking, identity recognition, service-time predictions, or regulatory certification.
 
-### Cinematic view based on the approved reference (November 2026)
+### Live cinematic restaurant view — completed 2 November 2026
 
-The **Original cinematic view** keeps the exact composition of the user's provided illustration rather than replacing it with simplified geometry. There are floating clickable table labels, animated sensor pulses and subtle feather-masked motion in customer/staff regions. **This animation is a 2.5D effect on a still illustration, not a real recorded video or fully rigged 3D character animation.** Camera-derived table status changes are reflected in the overlay, while actions like eating or wiping remain simulated.
+The [public live demo](https://tablesight-ai-restaurant.vercel.app/) now **includes the approved photorealistic restaurant artwork inside the deployed site** at `docs/assets/restaurant-reference.webp`. All visitors receive the same image without uploading files, granting access to local files, or configuring a browser. The image is also retained at `assets/restaurant-reference.webp` in the repository.
 
-To make the exact artwork available to **all public visitors**, the copyright owner must add their approved PNG at `assets/restaurant-reference.png` on GitHub. The published viewer attempts to load it from the public repository at runtime. Until that asset exists, the viewer explicitly invites the visitor to select the approved image locally. A chosen image is stored in that viewer's browser with IndexedDB and does not upload to any server. The *Alternate 3D model* remains available for visitors without the image. The Vercel static site requires no additional deployment once the public GitHub raw asset exists.
+The image preserves the exact original composition of dining tables, chairs, guests, and cleaning staff. On top of that artwork, the app adds **real CSS motion**, soft localized movement around diners and staff, pulsing sensor lights, dynamic table-state badges, pause/resume, playback speed, and clickable tables. Camera detection and manual dashboard changes update these table states.
 
-### Living 3D restaurant — interactive upgrade (November 2026)
+**Important limitation:** A single still image is not a skeletal animation or live video. The movements are 2.5D visual effects and are **not** evidence of actual guests eating or cleaners wiping. The camera AI currently detects person proximity in manually calibrated zones; it cannot verify eating or cleaning. The previous experimental procedural Three.js model is retained in source files for future research but **is not used in the public default experience**.
 
-The live preview renders a **procedural Three.js digital twin**, rather than the original circular table markers. Each table has 3D furniture, place settings, dynamic lighting, simulated diner gestures, and animated staff wiping/resetting tasks. Status rings and badges respond to table state changes. Drag to rotate the viewpoint, click floating table labels to operate them, or pause the motion.
-
-**Important distinction:** The earlier cinematic images were *concept art*, not rigged animations. The interactive 3D people are **stylized simulated avatars**, not real customers reconstructed from cameras. The camera AI can change table occupancy states, but it does not actually recognize someone eating or a cleaner wiping a surface. Staff must manually confirm cleaning completion. Three.js is loaded on first visit from a CDN and WebGL is required. The legacy floor remains as a fallback when 3D rendering is unavailable.
+The project is a tested prototype for a customer demonstration, not a clinically/operationally validated surveillance solution. For realistic full-body gestures, each person would need a rigged character or separately produced frame-based animation asset.
 
 ### Product capabilities
 
